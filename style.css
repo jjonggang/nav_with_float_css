@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: -0.02em;
+  background-color: black;
+}
+
+a {
+  font-size: 18px;
+  line-height: 20px;
+  color: #8492a6;
+  text-decoration: none;
+}
+
+/* ▼ WHERE YOUR CODE BEGINS */
+
+ul {
+  /* 점 없애기 */
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.tab-menu {
+  max-width: 540px;
+  border-bottom: 1px solid #e5eaef;
+  background-color: white;
+}
+
+/* .tab-menu {
+  overflow: hidden;
+} */
+
+/* 가상요소를 하나 만들어서 parent가 이 요소를 기준으로 float를 잡을 수 있게 하여 float으로 인한 layout붕괴를 막는다.  */
+.tab-menu::after {
+  content: "";
+  /* 가상요소를 쓸 때는 content를 반드시 써야한다.  */
+  display: block;
+  /* clear를 사용하려면 display는 block이 돼야한다.  */
+  clear: left;
+  /* float left이기 때문에 */
+}
+
+.tab-menu-item {
+  float: left;
+}
+
+.tab-menu-item a {
+  padding: 16px 20px;
+  /* a는 기본적으로 inline이다. 위 아래 패딩을 넣기 위해서는 display를 block으로 바꿔줘야한다.  */
+  display: block;
+}
+
+.tab-menu-item.selected {
+  border-bottom: 2px solid #2860e1;
+}
+
+.tab-menu-item.selected a {
+  color: #2860e1;
+  font-weight: 500;
+}
